@@ -138,6 +138,7 @@ i2c_codec.writeto_mem(I2C_CODEC_ADDR, 38 , b'\x10' ) # 00010000 (Configure HPRCO
 i2c_codec.writeto_mem(I2C_CODEC_ADDR, 43 , b'\x00' ) # 00000000 (Unmute the left DAC)
 i2c_codec.writeto_mem(I2C_CODEC_ADDR, 44 , b'\x00' ) # 00000000 (Unmute the right DAC)
 
+
 def finger_detected():
     rolling_short = sum(history[-short_average:])/short_average
     rolling_long = sum(history[-long_average:])/long_average
@@ -147,8 +148,8 @@ def finger_detected():
             time.sleep(4)
             display.number(BPM)
             limit = 2
-            shuffle = random.randint(0, limit)
             chosenPlaylist = chill_SONGS
+            shuffle = random.randint(0, len(chosenPlaylist)-1)
             player.play(chosenPlaylist[shuffle], loop=False)
             while player.isplaying():
                 time.sleep(4)
@@ -169,8 +170,8 @@ def finger_detected():
             time.sleep(4)
             display.number(BPM)
             limit = 2
-            shuffle = random.randint(0, limit)
             chosenPlaylist = chill_SONGS
+            shuffle = random.randint(0, len(chosenPlaylist)-1)
             player.play(chosenPlaylist[shuffle], loop=False)
             while player.isplaying():
                 time.sleep(4)
@@ -192,8 +193,8 @@ def finger_detected():
             time.sleep(4)
             display.number(BPM)
             tight_bound = 2
-            shuffle = random.randint(0, limit)
             chosenPlaylist = hype_SONGS
+            shuffle = random.randint(0, len(chosenPlaylist)-1)
             player.play(chosenPlaylist[shuffle], loop=False)
             while player.isplaying():
                 time.sleep(4)
@@ -215,8 +216,8 @@ def finger_detected():
             time.sleep(4)
             display.number(BPM)
             limit = 2
-            shuffle = random.randint(0, limit)
             chosenPlaylist = hype_SONGS
+            shuffle = random.randint(0, len(chosenPlaylist)-1)
             player.play(chosenPlaylist[shuffle], loop=False)
             while player.isplaying():
                 time.sleep(4)
@@ -239,11 +240,11 @@ def finger_detected():
             init = random.randint(65, 85)
             display.number(init)
             limit = 2
-            shuffle = random.randint(0, limit)
-            if init < 80:
-                chosenPlaylist = chill_SONGS
-            else:
+            if init < 75:
                 chosenPlaylist = hype_SONGS
+            else:
+                chosenPlaylist = chill_SONGS
+            shuffle = random.randint(0, len(chosenPlaylist)-1)
             player.stop()
             player.play(chosenPlaylist[shuffle], loop=False)
             while player.isplaying():
