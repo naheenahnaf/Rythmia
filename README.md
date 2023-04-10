@@ -1,2 +1,2 @@
 # Rythmia
-A device that can play music based on the user's heart rate. 
+A device that can play music based on the user's heart rate. This project interfaces with the RP2040 Pico microcontroller. Heart rate data is collected via a pulse sensor, the data is sampled and a BPM is calculated, and based on the BPM a song will play. Songs are called from an external SD card and using the I2S interface, each audio file is played in 16-bit Stereo sampled at 48kHz. An audio codec is used with I2C configuration to enable audio playback, amplification, volume control, etc. 
